@@ -59,7 +59,6 @@ function LocationWeather({ weather, list, setList, todo, arrow, setArrow }) {
             />
             <Typography className="date">{dateBuilder(new Date())}</Typography>
           </Typography>
-
           <Typography className="temp">
             {Math.round(weather.main.temp)}°C
             <img

@@ -1,7 +1,7 @@
 import { Input } from "@material-ui/core";
 import React from "react";
 
-function WheaterCard({
+function WeatherCard({
   query,
   setQuery,
   weather,
@@ -43,4 +43,4 @@ function WheaterCard({
   );
 }
 
-export default WheaterCard;
+export default WeatherCard;
