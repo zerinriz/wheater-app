@@ -1,16 +1,17 @@
 import React from "react";
 import LocationWheater from "./LocationWheater";
 
-function LocationList({ list, setList, weather }) {
+function LocationList({ list, setList }) {
   return (
     <div className="container">
       <ul className="list">
-        {list.map((todo) => (
+        {list.map((item) => (
           <LocationWheater
-            list={list.id}
+            list={list}
             setList={setList}
-            key={todo.id}
-            weather={todo.weather}
+            key={item.id}
+            todo={item}
+            weather={item.weather}
           />
         ))}
       </ul>

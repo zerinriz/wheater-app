@@ -1,20 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
-import { Button, Typography } from "@material-ui/core";
+import { Button, Typography, Container } from "@material-ui/core";
 import WheaterCard from "./components/WheaterCard";
-import LocationList from "./components/LocationList";
+import WeatherDisplay from "./components/WeatherDisplay";
 
 function App() {
   const [query, setQuery] = useState("");
   const [weather, setWeather] = useState({});
   const [disabled, setDisabled] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
+  const [arrow, setArrow] = useState("");
   const [list, setList] = useState([]);
+
+  useEffect(() => {
+    setList([{ weather, id: Math.random() * 1000 }, ...list]);
+    console.log(arrow);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [weather]);
 
   if (showSearch === false) {
     return (
-      <div>
-        <Typography variant="h3">Wheater</Typography>
+      <Container>
+        <Typography
+          color="secondary"
+          align="center"
+          variant="h3"
+          style={{
+            marginTop: "20px",
+            marginBottom: "20px",
+          }}
+        >
+          Wheater Application
+        </Typography>
+        <WeatherDisplay
+          list={list}
+          setList={setList}
+          weather={weather}
+          arrow={arrow}
+          setArrow={setArrow}
+        />
         <Button
           onClick={() => {
             setDisabled(true);
@@ -22,28 +46,46 @@ function App() {
           }}
           variant="contained"
           color="secondary"
-          style={{ width: 44, height: 44, borderRadius: 44 / 2, fontSize: 30 }}
+          style={{
+            width: 44,
+            height: 44,
+            borderRadius: 44 / 2,
+            fontSize: 30,
+            marginTop: 30,
+          }}
         >
           +
         </Button>
-      </div>
+      </Container>
     );
   } else if (showSearch === true) {
     return (
-      <div>
-        <div>
-          <Typography variant="h3">Wheater</Typography>
-          <WheaterCard
-            setDisabled={setDisabled}
-            query={query}
-            setQuery={setQuery}
-            weather={weather}
-            setWeather={setWeather}
-            list={list}
-            setList={setList}
-          />
-          <LocationList list={list} setList={setList} weather={weather} />
-        </div>
+      <Container>
+        <Typography
+          color="secondary"
+          align="center"
+          variant="h3"
+          style={{ marginTop: "20px", marginBottom: "20px" }}
+        >
+          Wheater Application
+        </Typography>
+        <WheaterCard
+          setDisabled={setDisabled}
+          setShowSearch={setShowSearch}
+          query={query}
+          setQuery={setQuery}
+          weather={weather}
+          setWeather={setWeather}
+          list={list}
+          setList={setList}
+        />
+        <WeatherDisplay
+          list={list}
+          setList={setList}
+          weather={weather}
+          arrow={arrow}
+          setArrow={setArrow}
+        />
         <Button
           onClick={() => {
             setDisabled(true);
@@ -51,11 +93,17 @@ function App() {
           disabled={disabled}
           variant="contained"
           color="secondary"
-          style={{ width: 44, height: 44, borderRadius: 44 / 2, fontSize: 30 }}
+          style={{
+            width: 44,
+            height: 44,
+            borderRadius: 44 / 2,
+            fontSize: 30,
+            marginTop: 30,
+          }}
         >
           +
         </Button>
-      </div>
+      </Container>
     );
   }
 }

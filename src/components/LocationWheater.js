@@ -1,8 +1,10 @@
 import React from "react";
+import { Button, Paper, Typography } from "@material-ui/core";
 
-function LocationWheater({ weather, list, setList }) {
+function LocationWheater({ weather, list, setList, todo, arrow, setArrow }) {
   const deleteHandler = () => {
-    setList(list.filter((el) => el.id !== list.id));
+    console.log(list);
+    setList(list.filter((item) => item.id !== todo.id));
   };
 
   const dateBuilder = (d) => {
@@ -40,22 +42,58 @@ function LocationWheater({ weather, list, setList }) {
   return (
     <div>
       {typeof weather.main != "undefined" ? (
-        <div>
-          <div className="location-box">
-            <div className="location">
-              {weather.name}, {weather.sys.country}
-            </div>
-            <div className="date">{dateBuilder(new Date())}</div>
-          </div>
-          <li className="weather-box">
-            <div className="temp">{Math.round(weather.main.temp)}°c</div>
-            <div className="weather">{weather.weather[0].main}</div>
-            <div className="weather">{weather.wind.speed}</div>
-            <button onClick={deleteHandler} className="trash-btn">
-              Remove
-            </button>
-          </li>
-        </div>
+        <Paper
+          variant="outlined"
+          style={{
+            margin: "20px",
+            height: "200px",
+            width: "150px",
+          }}
+        >
+          <Typography className="location-box" style={{ marginTop: "10px" }}>
+            {weather.name},
+            <img
+              style={{ width: "20px", height: "20px", marginLeft: "10px" }}
+              src={`https://www.countryflags.io/${weather.sys.country}/flat/24.png`}
+              alt={weather.sys.country}
+            />
+            <Typography className="date">{dateBuilder(new Date())}</Typography>
+          </Typography>
+
+          <Typography className="temp">
+            {Math.round(weather.main.temp)}°C
+            <img
+              title={`${weather.weather[0].main}`}
+              style={{ height: "40px", width: "40px", marginLeft: "10px" }}
+              alt={weather.weather[0].icon}
+              src={`http://openweathermap.org/img/w/${weather.weather[0].icon}.png`}
+              className="weather"
+            ></img>
+          </Typography>
+          <Typography className="weather">
+            {weather.wind.speed} km/h
+            <div
+              className="weather"
+              style={{
+                display: "inline-table",
+                marginLeft: "10px",
+                width: "15px",
+                height: "15px",
+                borderTop: "2px solid ",
+                borderRight: "2px solid",
+                transform: `rotate(${weather.wind.deg}deg)`,
+              }}
+            />
+          </Typography>
+          <Button
+            onClick={deleteHandler}
+            color="secondary"
+            size="medium"
+            style={{ marginTop: "5px" }}
+          >
+            Remove
+          </Button>
+        </Paper>
       ) : (
         ""
       )}
