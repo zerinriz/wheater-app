@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import { Button, Typography, Container } from "@material-ui/core";
-import WheaterCard from "./components/WheaterCard";
+import WeatherCard from "./components/WeatherCard";
 import WeatherDisplay from "./components/WeatherDisplay";
 
 function App() {
@@ -69,7 +69,7 @@ function App() {
         >
           Weather Application
         </Typography>
-        <WheaterCard
+        <WeatherCard
           setDisabled={setDisabled}
           setShowSearch={setShowSearch}
           query={query}
