@@ -30,7 +30,7 @@ function App() {
             marginBottom: "20px",
           }}
         >
-          Wheater Application
+          Weather Application
         </Typography>
         <WeatherDisplay
           list={list}
@@ -67,7 +67,7 @@ function App() {
           variant="h3"
           style={{ marginTop: "20px", marginBottom: "20px" }}
         >
-          Wheater Application
+          Weather Application
         </Typography>
         <WheaterCard
           setDisabled={setDisabled}

@@ -1,12 +1,12 @@
 import { Grid } from "@material-ui/core";
 import React from "react";
-import LocationWheater from "./LocationWheater";
+import LocationWeather from "./LocationWeather";
 
 function WeatherDisplay({ list, setList, arrow, setArrow }) {
   return (
     <Grid container>
       {list.map((item) => (
-        <LocationWheater
+        <LocationWeather
           list={list}
           setList={setList}
           key={item.id}

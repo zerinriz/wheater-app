@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Paper, Typography } from "@material-ui/core";
 
-function LocationWheater({ weather, list, setList, todo, arrow, setArrow }) {
+function LocationWeather({ weather, list, setList, todo, arrow, setArrow }) {
   const deleteHandler = () => {
     console.log(list);
     setList(list.filter((item) => item.id !== todo.id));
@@ -101,4 +101,4 @@ function LocationWheater({ weather, list, setList, todo, arrow, setArrow }) {
   );
 }
 
-export default LocationWheater;
+export default LocationWeather;

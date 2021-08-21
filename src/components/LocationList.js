@@ -1,12 +1,12 @@
 import React from "react";
-import LocationWheater from "./LocationWheater";
+import LocationWeather from "./LocationWeather";
 
 function LocationList({ list, setList }) {
   return (
     <div className="container">
       <ul className="list">
         {list.map((item) => (
-          <LocationWheater
+          <LocationWeather
             list={list}
             setList={setList}
             key={item.id}
