@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import "./App.css";
 import { Button, Typography, Container } from "@material-ui/core";
 import WeatherCard from "./components/WeatherCard";
@@ -12,11 +13,14 @@ function App() {
   const [arrow, setArrow] = useState("");
   const [list, setList] = useState([]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setList([{ weather, id: Math.random() * 1000 }, ...list]);
     console.log(arrow);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    console.log(process.env);
   }, [weather]);
+  useEffect(() => {
+    localStorage.setItem("WeatherList", JSON.stringify(list));
+  }, [list]);
 
   if (showSearch === false) {
     return (

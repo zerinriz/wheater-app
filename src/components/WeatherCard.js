@@ -10,7 +10,7 @@ function WeatherCard({
   setShowSearch,
 }) {
   const api = {
-    key: "9c4f68f6ba2005d71a5429d401b1ac13",
+    key: `${process.env.REACT_APP_UNSPLASH_URL}`,
     base: "https://api.openweathermap.org/data/2.5/",
   };
 
@@ -26,6 +26,7 @@ function WeatherCard({
           setQuery("");
           setDisabled(false);
           evt.preventDefault();
+          console.log(process.env);
         });
     }
   };
