@@ -21,15 +21,13 @@ function WeatherCard({
         .then((result) => {
           setShowSearch(false);
           setWeather(result);
-          console.log(result);
-          console.log(weather);
           setQuery("");
           setDisabled(false);
           evt.preventDefault();
-          console.log(process.env);
         });
     }
   };
+
   return (
     <div className="search-box">
       <Input

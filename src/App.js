@@ -7,7 +7,7 @@ import WeatherDisplay from "./components/WeatherDisplay";
 
 function App() {
   const [query, setQuery] = useState("");
-  const [weather, setWeather] = useState({});
+  const [weather, setWeather] = useState([]);
   const [disabled, setDisabled] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [arrow, setArrow] = useState("");
@@ -15,8 +15,6 @@ function App() {
 
   useLayoutEffect(() => {
     setList([{ weather, id: Math.random() * 1000 }, ...list]);
-    console.log(arrow);
-    console.log(process.env);
   }, [weather]);
   useEffect(() => {
     localStorage.setItem("WeatherList", JSON.stringify(list));

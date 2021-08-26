@@ -50,14 +50,21 @@ function LocationWeather({ weather, list, setList, todo, arrow, setArrow }) {
             width: "150px",
           }}
         >
-          <Typography className="location-box" style={{ marginTop: "10px" }}>
+          <Typography
+            className="location-box"
+            component={"span"}
+            variant={"body1"}
+            style={{ marginTop: "10px" }}
+          >
             {weather.name},
             <img
               style={{ width: "20px", height: "20px", marginLeft: "10px" }}
               src={`https://www.countryflags.io/${weather.sys.country}/flat/24.png`}
               alt={weather.sys.country}
             />
-            <Typography className="date">{dateBuilder(new Date())}</Typography>
+            <Typography component={"span"} variant={"body1"} className="date">
+              {dateBuilder(new Date())}
+            </Typography>
           </Typography>
           <Typography className="temp">
             {Math.round(weather.main.temp)}°C
@@ -69,7 +76,7 @@ function LocationWeather({ weather, list, setList, todo, arrow, setArrow }) {
               className="weather"
             ></img>
           </Typography>
-          <Typography className="weather">
+          <Typography component={"span"} variant={"body1"} className="weather">
             {weather.wind.speed} km/h
             <div
               className="weather"
